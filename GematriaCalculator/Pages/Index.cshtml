@@ -1,10 +1,118 @@
 ﻿@page
+@using GematriaCalculator.Data
+@using GematriaCalculator.Models
 @model IndexModel
+@inject StrongsDbContext _context
 @{
-    ViewData["Title"] = "Home page";
-}
+    ViewData["Title"] = "Gematria Calculator";
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    List<Models.Gematria> hebrewGematrias = _context.Gematrias.ToList();
+}
+<div class="modal position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h2 class="fw-bold mb-0">Hebrew</h2>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <form class="">
+                    <div class="form-floating mb-3">
+                        <input type="hidden" id="sum" value="0" />
+                        <input type="text" class="form-control rounded-3" id="q" name="q" />
+                        <label for="q">0</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-secondary" type="submit">&#x1F50E</button>
+                    <h2 class="fs-5 fw-bold mb-3">Standard</h2>
+                </form>
+                <div class="d-grid">
+                    <div class="btn-group">
+                        @for (int i = 8; i >= 0; i--)
+                        {
+                            Models.Gematria hebrewGematria = hebrewGematrias[i];
+                            <button type="button" class="btn btn-secondary" name="@hebrewGematria.Letter" value="@hebrewGematria.Value">
+                                @hebrewGematria.Letter
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" style="z-index: 1;">
+                                    @hebrewGematria.Value
+                                    <span class="visually-hidden">@hebrewGematria.Value</span>
+                                </span>
+                            </button>
+                        }
+                    </div>
+                    <div class="btn-group">
+                        @for (int i = 17; i >= 9; i--)
+                        {
+                            Models.Gematria hebrewGematria = hebrewGematrias[i];
+                            <button type="button" class="btn btn-secondary" name="@hebrewGematria.Letter" value="@hebrewGematria.Value">
+                                @hebrewGematria.Letter
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" style="z-index: 1;">
+                                    @hebrewGematria.Value
+                                    <span class="visually-hidden">@hebrewGematria.Value</span>
+                                </span>
+                            </button>
+                        }
+                    </div>
+                    <div class="btn-group">
+                        @for (int i = 26; i >= 18; i--)
+                        {
+                            Models.Gematria hebrewGematria = hebrewGematrias[i];
+                            <button type="button" class="btn btn-secondary" name="@hebrewGematria.Letter" value="@hebrewGematria.Value">
+                                @hebrewGematria.Letter
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" style="z-index: 1;">
+                                    @hebrewGematria.Value
+                                    <span class="visually-hidden">@hebrewGematria.Value</span>
+                                </span>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+@section Scripts{
+    <script>
+        function getValue(item) {
+            let result = 0;
+            if (item.length) {
+                if ($(`button[name=${item}]`).length) {
+                    let bValue = $(`button[name=${item}]`).val();
+                    if (bValue) {
+                        const parsed = parseInt(bValue);
+                        if (isNaN(parsed)) {
+                            result = 0;
+                        }
+                        else {
+                            result = parsed;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        $(function () {
+            $(".modal-body button[type=button]").click(function () {
+                let qText = $("#q").val();
+                let bName = $(this).attr("name");
+                $("#q").val(qText + bName);
+                $("#q").keyup();
+                $("#q").focus();
+            });
+
+            $("#q").keyup(function () {
+                let sum = 0;
+                let qText = $(this).val();
+                const stripped = qText.replace(/\s+/g, '')
+                if (stripped) {
+                    for (var i = 0; i < stripped.length; i++) {
+                        let v = getValue(stripped.charAt(i)); 
+                        sum = sum + v;
+                    }
+                } 
+                $("label[for=q]").text(sum);
+            });
+
+            $("#q").focus();
+        });
+    </script>
+}
