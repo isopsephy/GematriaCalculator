@@ -34,7 +34,7 @@ namespace GematriaCalculator.Data
 
             modelBuilder.Entity<Greek>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Number);
 
                 entity.ToView("Greeks");
 
@@ -51,7 +51,7 @@ namespace GematriaCalculator.Data
 
             modelBuilder.Entity<Hebrew>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Number);
 
                 entity.ToView("Hebrews");
 
