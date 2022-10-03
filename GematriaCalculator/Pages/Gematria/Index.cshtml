@@ -5,38 +5,36 @@
 }
 @section Styles{
     <style>
-        .table th{
+        .table th {
             width: 25%;
         }
     </style>
 }
-<div class="container">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Letter)</th>
-                    <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Value)</th>
-                    <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Name)</th>
-                    <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Transliteration)</th>
-                </tr>
-            </thead>
-            <tbody>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Letter)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Standard)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Large)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Small)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Ordinal)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Name)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Transliteration)</th>
+                    </tr>
+                </thead>
+                <tbody>
                 @foreach (var item in Model.Gematrias)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Letter)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Value)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Transliteration)
-                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Letter)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Standard)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Large)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Small)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Ordinal)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Transliteration)</td>
                     </tr>
                 }
             </tbody>

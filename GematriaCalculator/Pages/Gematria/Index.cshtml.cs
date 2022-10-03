@@ -25,7 +25,7 @@ namespace GematriaCalculator.Pages.Gematria
         {
             if (_context.Gematrias != null)
             {
-                Gematrias = await _context.Gematrias.ToListAsync();
+                Gematrias = await _context.Gematrias.OrderBy(x => x.Large).ToListAsync();
             }
         }
     }

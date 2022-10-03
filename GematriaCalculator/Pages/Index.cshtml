@@ -2,7 +2,7 @@
 @using GematriaCalculator.Data
 @using GematriaCalculator.Models
 @model IndexModel
-@inject StrongsDbContext _context
+@inject             Data.StrongsDbContext _context
 @{
     ViewData["Title"] = "Gematria Calculator";
 
@@ -29,11 +29,11 @@
                         @for (int i = 8; i >= 0; i--)
                         {
                             Models.Gematria hebrewGematria = hebrewGematrias[i];
-                            <button type="button" class="btn btn-outline-dark" name="@hebrewGematria.Letter" value="@hebrewGematria.Value">
+                            <button type="button" class="btn btn-outline-dark" name="@hebrewGematria.Letter" value="@hebrewGematria.Standard">
                                 @hebrewGematria.Letter
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" style="z-index: 1;">
-                                    @hebrewGematria.Value
-                                    <span class="visually-hidden">@hebrewGematria.Value</span>
+                                    @hebrewGematria.Standard
+                                    <span class="visually-hidden">@hebrewGematria.Standard</span>
                                 </span>
                             </button>
                         }
@@ -42,11 +42,11 @@
                         @for (int i = 17; i >= 9; i--)
                         {
                             Models.Gematria hebrewGematria = hebrewGematrias[i];
-                            <button type="button" class="btn btn-outline-dark" name="@hebrewGematria.Letter" value="@hebrewGematria.Value">
+                            <button type="button" class="btn btn-outline-dark" name="@hebrewGematria.Letter" value="@hebrewGematria.Standard">
                                 @hebrewGematria.Letter
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" style="z-index: 1;">
-                                    @hebrewGematria.Value
-                                    <span class="visually-hidden">@hebrewGematria.Value</span>
+                                    @hebrewGematria.Standard
+                                    <span class="visually-hidden">@hebrewGematria.Standard</span>
                                 </span>
                             </button>
                         }
@@ -55,11 +55,11 @@
                         @for (int i = 26; i >= 18; i--)
                         {
                             Models.Gematria hebrewGematria = hebrewGematrias[i];
-                            <button type="button" class="btn btn-outline-dark" name="@hebrewGematria.Letter" value="@hebrewGematria.Value">
+                            <button type="button" class="btn btn-outline-dark" name="@hebrewGematria.Letter" value="@hebrewGematria.Standard">
                                 @hebrewGematria.Letter
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" style="z-index: 1;">
-                                    @hebrewGematria.Value
-                                    <span class="visually-hidden">@hebrewGematria.Value</span>
+                                    @hebrewGematria.Standard
+                                    <span class="visually-hidden">@hebrewGematria.Standard</span>
                                 </span>
                             </button>
                         }
