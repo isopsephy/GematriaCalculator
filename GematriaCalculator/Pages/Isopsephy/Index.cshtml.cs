@@ -19,13 +19,13 @@ namespace GematriaCalculator.Pages.Isopsephy
             _context = context;
         }
 
-        public IList<Models.Isopsephy> Isopsephys { get;set; } = default!;
+        public IList<Models.Isopsephy> Isopsephys { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             if (_context.Isopsephys != null)
             {
-                Isopsephys = await _context.Isopsephys.ToListAsync();
+                Isopsephys = await _context.Isopsephys.OrderBy(x => x.Value).ToListAsync();
             }
         }
     }
