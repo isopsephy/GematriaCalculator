@@ -5,11 +5,9 @@ namespace GematriaCalculator.Models
 {
     public class HebrewGematria : Hebrew
     {
-        StrongsDbContext _context;
-
-        public HebrewGematria(StrongsDbContext context)
+        public HebrewGematria()
         {
-            _context = context;
+          
         }
 
         [DisplayName("Mispar Hechrachi")]
@@ -20,7 +18,7 @@ namespace GematriaCalculator.Models
                 long sum = 0;
                 foreach (char letter in Lemma)
                 {
-                    Gematria gematria = _context.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
+                    Gematria gematria = ApplicationData.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
                     if (gematria != null)
                         sum += gematria.Standard;
                 }
@@ -36,7 +34,7 @@ namespace GematriaCalculator.Models
                 long sum = 0;
                 foreach (char letter in Lemma)
                 {
-                    Gematria gematria = _context.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
+                    Gematria gematria = ApplicationData.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
                     if (gematria != null)
                         sum += gematria.Large;
                 }
@@ -52,7 +50,7 @@ namespace GematriaCalculator.Models
                 long sum = 0;
                 foreach (char letter in Lemma)
                 {
-                    Gematria gematria = _context.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
+                    Gematria gematria = ApplicationData.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
                     if (gematria != null)
                         sum += gematria.Small;
                 }
@@ -68,7 +66,7 @@ namespace GematriaCalculator.Models
                 long sum = 0;
                 foreach (char letter in Lemma)
                 {
-                    Gematria gematria = _context.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
+                    Gematria gematria = ApplicationData.Gematrias.FirstOrDefault(x => x.Letter.FirstOrDefault() == letter);
                     if (gematria != null)
                         sum += gematria.Ordinal;
                 }
