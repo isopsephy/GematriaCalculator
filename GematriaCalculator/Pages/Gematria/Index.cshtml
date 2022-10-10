@@ -16,12 +16,12 @@
                 <thead>
                     <tr>
                         <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Letter)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Name)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Transliteration)</th>
                         <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Standard)</th>
                         <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Large)</th>
                         <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Small)</th>
                         <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Ordinal)</th>
-                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Name)</th>
-                        <th scope="col">@Html.DisplayNameFor(model => model.Gematrias[0].Transliteration)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,12 +29,12 @@
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Letter)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Transliteration)</td>
                         <td>@Html.DisplayFor(modelItem => item.Standard)</td>
                         <td>@Html.DisplayFor(modelItem => item.Large)</td>
                         <td>@Html.DisplayFor(modelItem => item.Small)</td>
                         <td>@Html.DisplayFor(modelItem => item.Ordinal)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Transliteration)</td>
                     </tr>
                 }
             </tbody>
